@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { authorizationUser } from '../../redux/auth/auth-operations';
 
 const LoginPage = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,7 +26,7 @@ const LoginPage = () => {
     event.preventDefault();
     const newContact = { email, password };
 
-    console.log(newContact);
+    dispatch(authorizationUser(newContact));
     reset();
   };
 

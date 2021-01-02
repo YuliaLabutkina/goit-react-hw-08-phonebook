@@ -1,6 +1,10 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { registrationUser } from '../../redux/auth/auth-operations';
 
 const RegisterPage = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +30,7 @@ const RegisterPage = () => {
     event.preventDefault();
     const newContact = { email, name, password };
 
-    console.log(newContact);
+    dispatch(registrationUser(newContact));
     reset();
   };
 

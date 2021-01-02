@@ -1,39 +1,12 @@
-// import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-// import {
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import phonebookReducer from './phonebook/phonebook-reducer';
-
-// const middleware = [
-//   ...getDefaultMiddleware({
-//     serializableCheck: {
-//       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//     },
-//   }),
-// ];
-
-// const store = configureStore({
-//   reducer: {
-//     contacts: phonebookReducer,
-//   },
-//   devTools: process.env.NODE_ENV === 'development',
-//   middleware,
-// });
-
-// export { store };
-
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import phonebookReducer from './phonebook/phonebook-reducer';
+import authUsersReducer from './auth/auth-reducer';
 
 const rootReducer = combineReducers({
   contacts: phonebookReducer,
+  auth: authUsersReducer,
 });
 
 const store = createStore(
