@@ -8,6 +8,14 @@ const authorizationUserRequest = createAction('auth/authorizationUserRequest');
 const authorizationUserSuccess = createAction('auth/authorizationUserSuccess');
 const authorizationUserError = createAction('auth/authorizationUserError');
 
+const logoutUserRequest = createAction('auth/logoutUserRequest');
+const logoutUserSuccess = createAction('auth/logoutUserSuccess');
+const logoutUserError = createAction('auth/logoutUserError');
+
+const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
+const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
+const getCurrentUserError = createAction('auth/getCurrentUserError');
+
 export default {
   registrationUserRequest,
   registrationUserSuccess,
@@ -15,4 +23,10 @@ export default {
   authorizationUserRequest,
   authorizationUserSuccess,
   authorizationUserError,
+  logoutUserRequest,
+  logoutUserSuccess,
+  logoutUserError,
+  getCurrentUserRequest,
+  getCurrentUserSuccess,
+  getCurrentUserError,
 };

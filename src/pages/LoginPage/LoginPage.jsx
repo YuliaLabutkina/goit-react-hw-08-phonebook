@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { authorizationUser } from '../../redux/auth/auth-operations';
+import { loading, error } from '../../redux/auth/auth-selectors';
+import PreLoader from '../../components/PreLoader';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
+  const loadingAuth = useSelector(loading);
+  const errorAuth = useSelector(error);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,7 +29,6 @@ const LoginPage = () => {
   const handleSubmit = event => {
     event.preventDefault();
     const newContact = { email, password };
-
     dispatch(authorizationUser(newContact));
     reset();
   };
@@ -36,32 +39,35 @@ const LoginPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        E-mail
-        <input
-          onChange={handleChange}
-          type="email"
-          name={'email'}
-          placeholder="Enter e-mail"
-          value={email}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          onChange={handleChange}
-          type="current-password"
-          name={'password'}
-          placeholder="Enter password"
-          value={password}
-          required
-        />
-      </label>
+    <>
+      {errorAuth && <div>Invalid email or password! Try again!</div>}
+      <form onSubmit={handleSubmit}>
+        <label>
+          E-mail
+          <input
+            onChange={handleChange}
+            type="email"
+            name={'email'}
+            placeholder="Enter e-mail"
+            value={email}
+            required
+          />
+        </label>
+        <label>
+          Password
+          <input
+            onChange={handleChange}
+            type="current-password"
+            name={'password'}
+            placeholder="Enter password"
+            value={password}
+            required
+          />
+        </label>
 
-      <button type="submit">Login</button>
-    </form>
+        {loadingAuth ? <PreLoader /> : <button type="submit">Login</button>}
+      </form>
+    </>
   );
 };
 

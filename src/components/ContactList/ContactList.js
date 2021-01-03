@@ -23,7 +23,7 @@ const ContactList = () => {
 
   useEffect(() => {
     dispatch(fetchUserContact());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>

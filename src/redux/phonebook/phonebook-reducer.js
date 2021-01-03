@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import tasksActions from './phonebook-action';
+import authActions from '../auth/auth-action';
 
 const fetchContact = (_, { payload }) => {
   return [...payload];
@@ -18,6 +19,7 @@ const items = createReducer([], {
   [tasksActions.fetchContactSuccess]: fetchContact,
   [tasksActions.addContactSuccess]: addContact,
   [tasksActions.removeContactSuccess]: removeContact,
+  [authActions.logoutUserSuccess]: () => [],
 });
 
 const filter = createReducer('', {

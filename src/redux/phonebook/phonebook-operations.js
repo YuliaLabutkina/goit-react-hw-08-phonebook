@@ -1,13 +1,13 @@
 import axios from 'axios';
 import tasksActions from './phonebook-action';
 
-axios.defaults.baseURL = 'http://localhost:2000/';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/';
 
 const fetchUserContact = () => dispatch => {
   dispatch(tasksActions.fetchContactRequest());
 
   axios
-    .get('contacts')
+    .get('/contacts')
     .then(({ data }) => dispatch(tasksActions.fetchContactSuccess(data)))
     .catch(error => dispatch(tasksActions.fetchContactError(error.message)));
 };
@@ -16,7 +16,7 @@ const addUserContact = ({ name, number }) => dispatch => {
   dispatch(tasksActions.addContactRequest());
 
   axios
-    .post('contacts', { name, number })
+    .post('/contacts', { name, number })
     .then(({ data }) => dispatch(tasksActions.addContactSuccess(data)))
     .catch(error => dispatch(tasksActions.addContactError(error.message)));
 };
