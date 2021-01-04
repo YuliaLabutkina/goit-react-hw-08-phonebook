@@ -1,7 +1,13 @@
-import Container from './HomePage.style';
+import Goo from '../../components/Goo';
+import Title from './HomePage.style';
 
 const HomePage = () => {
-  return <Container>Welcome! This is Home page!!!</Container>;
+  return (
+    <>
+      <Title>Welcome! This is Home page!!!</Title>
+      <Goo />
+    </>
+  );
 };
 
 export default HomePage;
