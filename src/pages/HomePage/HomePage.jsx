@@ -5,7 +5,7 @@ const HomePage = () => {
   return (
     <>
       <Title>Welcome! This is Home page!!!</Title>
-      <Goo />
+      {window.innerWidth > 960 && <Goo />}
     </>
   );
 };
