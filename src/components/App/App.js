@@ -35,7 +35,7 @@ const App = () => {
     <>
       <AppBar />
       <main>
-        <Suspense fallback={<PreLoader />}>
+        <Suspense fallback={<PreLoader sizePreloader="200px" />}>
           <Switch>
             <Route exact path={routes.home} component={HomePage} />
             <PrivateRoute path={routes.contactsPage} component={ContactsPage} />

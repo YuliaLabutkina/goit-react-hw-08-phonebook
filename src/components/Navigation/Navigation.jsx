@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { isAuthenticated } from '../../redux/auth/auth-selectors';
 import routes from '../../routes';
-import Nav from './Navigation.style';
+import { Nav, NavMenu } from './Navigation.style';
 import UserMenu from '../UserMenu';
 
 const Navigation = () => {
@@ -11,7 +11,7 @@ const Navigation = () => {
 
   return (
     <Nav>
-      <div>
+      <NavMenu>
         <NavLink
           exact
           to={routes.home}
@@ -30,7 +30,7 @@ const Navigation = () => {
             Phonebook
           </NavLink>
         )}
-      </div>
+      </NavMenu>
 
       {isAuthenticatedUser ? (
         <UserMenu />

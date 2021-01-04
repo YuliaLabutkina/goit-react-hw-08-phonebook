@@ -4,6 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { authorizationUser } from '../../redux/auth/auth-operations';
 import { loading, error } from '../../redux/auth/auth-selectors';
 import PreLoader from '../../components/PreLoader';
+import {
+  Container,
+  Form,
+  LabelForm,
+  InputForm,
+  Button,
+  Error,
+} from './LoginPage.style';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -39,12 +47,12 @@ const LoginPage = () => {
   };
 
   return (
-    <>
-      {errorAuth && <div>Invalid email or password! Try again!</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
+    <Container>
+      {errorAuth && <Error>Invalid email or password! Try again!</Error>}
+      <Form onSubmit={handleSubmit}>
+        <LabelForm>
           E-mail
-          <input
+          <InputForm
             onChange={handleChange}
             type="email"
             name={'email'}
@@ -52,10 +60,10 @@ const LoginPage = () => {
             value={email}
             required
           />
-        </label>
-        <label>
+        </LabelForm>
+        <LabelForm>
           Password
-          <input
+          <InputForm
             onChange={handleChange}
             type="current-password"
             name={'password'}
@@ -63,11 +71,15 @@ const LoginPage = () => {
             value={password}
             required
           />
-        </label>
+        </LabelForm>
 
-        {loadingAuth ? <PreLoader /> : <button type="submit">Login</button>}
-      </form>
-    </>
+        {loadingAuth ? (
+          <PreLoader sizePreloader="60px" />
+        ) : (
+          <Button type="submit">Login</Button>
+        )}
+      </Form>
+    </Container>
   );
 };
 

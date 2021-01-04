@@ -20,7 +20,7 @@ ul {
 
 .navLink {
   font-size: 26px;
-  color: black;
+  color: #fa8072;
   margin-right: 16px;
 }
 
@@ -29,5 +29,5 @@ ul {
 }
 
 .navLink--active {
-  color: red;
+  color: #f50057;
 }

@@ -1,8 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useCallback } from 'react';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import Button from '@material-ui/core/Button';
 import { name, loading } from '../../redux/auth/auth-selectors';
 import { logoutUser } from '../../redux/auth/auth-operations';
 import PreLoader from '../PreLoader';
+import { Container, UserGreeting } from './UserMenu.style';
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -12,10 +15,16 @@ const UserMenu = () => {
   const logout = useCallback(() => dispatch(logoutUser()), [dispatch]);
 
   return (
-    <>
-      <div>Welcome {userName}!</div>
-      {loadingAuth ? <PreLoader /> : <button onClick={logout}>Go out</button>}
-    </>
+    <Container>
+      <UserGreeting>Welcome {userName}!</UserGreeting>
+      {loadingAuth ? (
+        <PreLoader sizePreloader="36px" />
+      ) : (
+        <Button variant="outlined" color="secondary" onClick={logout}>
+          <ExitToAppIcon />
+        </Button>
+      )}
+    </Container>
   );
 };
 

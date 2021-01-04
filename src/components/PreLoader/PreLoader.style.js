@@ -2,8 +2,8 @@ import styled, { keyframes } from 'styled-components';
 
 const Loader = styled.div`
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: ${props => props.sizePreloader};
+  height: ${props => props.sizePreloader};
   margin: 0 auto;
   perspective: 780px;
 `;

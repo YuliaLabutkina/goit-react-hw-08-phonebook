@@ -1,8 +1,8 @@
 import { Loader, One, Two, Three } from './PreLoader.style';
 
-const PreLoader = () => {
+const PreLoader = ({ sizePreloader }) => {
   return (
-    <Loader>
+    <Loader sizePreloader={sizePreloader}>
       <One />
       <Two />
       <Three />

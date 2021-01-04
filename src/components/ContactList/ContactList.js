@@ -27,7 +27,7 @@ const ContactList = () => {
 
   return (
     <>
-      {loadingContacts && <PreLoader />}
+      {loadingContacts && <PreLoader sizePreloader="100px" />}
       {errorFetch && <Error>Error! {errorFetch}!!! Try again!</Error>}
       {!loadingContacts && !errorFetch && items && items.length > 0 ? (
         <List>

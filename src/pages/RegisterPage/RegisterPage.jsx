@@ -4,6 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import { registrationUser } from '../../redux/auth/auth-operations';
 import { loading, error } from '../../redux/auth/auth-selectors';
 import PreLoader from '../../components/PreLoader';
+import {
+  Container,
+  Form,
+  LabelForm,
+  InputForm,
+  Button,
+  Error,
+} from '../LoginPage/LoginPage.style';
 
 const RegisterPage = () => {
   const dispatch = useDispatch();
@@ -44,12 +52,12 @@ const RegisterPage = () => {
   };
 
   return (
-    <>
-      {errorAuth && <div>Invalid email or password! Try again!</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
+    <Container>
+      {errorAuth && <Error>Invalid email or password! Try again!</Error>}
+      <Form onSubmit={handleSubmit}>
+        <LabelForm>
           E-mail
-          <input
+          <InputForm
             onChange={handleChange}
             type="email"
             name={'email'}
@@ -57,10 +65,10 @@ const RegisterPage = () => {
             value={email}
             required
           />
-        </label>
-        <label>
+        </LabelForm>
+        <LabelForm>
           Name
-          <input
+          <InputForm
             onChange={handleChange}
             type="text"
             name={'name'}
@@ -68,10 +76,10 @@ const RegisterPage = () => {
             value={name}
             required
           />
-        </label>
-        <label>
+        </LabelForm>
+        <LabelForm>
           Password
-          <input
+          <InputForm
             onChange={handleChange}
             type="current-password"
             name={'password'}
@@ -79,11 +87,15 @@ const RegisterPage = () => {
             value={password}
             required
           />
-        </label>
+        </LabelForm>
 
-        {loadingAuth ? <PreLoader /> : <button type="submit">Sing Up</button>}
-      </form>
-    </>
+        {loadingAuth ? (
+          <PreLoader sizePreloader="60px" />
+        ) : (
+          <Button type="submit">Sing Up</Button>
+        )}
+      </Form>
+    </Container>
   );
 };
 
