@@ -4,7 +4,7 @@ import Title from './HomePage.style';
 const HomePage = () => {
   return (
     <>
-      <Title>Welcome! This is Home page!!!</Title>
+      <Title>Welcome!</Title>
       {window.innerWidth > 960 && <Goo />}
     </>
   );
